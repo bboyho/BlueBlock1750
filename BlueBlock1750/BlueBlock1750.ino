@@ -14,7 +14,7 @@ BC127 BTModu(&swPort);
 
 //buttons
 const int buttonResetPin = 2; //reset button
-const int resetLEDPin = 8;    //red LED 
+const int resetLEDPin = 8;    //red LED
 int buttonResetState = HIGH; //set reset button HIGH, so not pressing.
 
 const int buttonDiscoverPin = 3; //discover button
@@ -29,7 +29,7 @@ void setup() {
   pinMode(buttonResetPin, INPUT_PULLUP); //use internal pullup resistor w/ reset button
   pinMode(resetLEDPin, OUTPUT);//big dome pushbutton LED
   digitalWrite(resetLEDPin, HIGH);//turn LED ON
-  
+
   pinMode(buttonDiscoverPin, INPUT_PULLUP);//use internal pullup resistor w/ discover button
   pinMode(DiscoverLEDPin, OUTPUT);//big dome pushbutton LED
   digitalWrite(DiscoverLEDPin, LOW);//turn LED OFF since BC127 is in AUTOCONNECT MODE
@@ -40,14 +40,16 @@ void setup() {
   /*TONE TE 400 V 64 TI 0 N C5 L 8
                           N R0 L 32
                           N E5 L 8
-                          N R0 L 32 
-                          N G5 L 8 
-                          N R0 L 32 
-                          N B5 L 4 
-                          N R0 L 1 
-                          N C6 L 2 
+                          N R0 L 32
+                          N G5 L 8
+                          N R0 L 32
+                          N B5 L 4
+                          N R0 L 1
+                          N C6 L 2
                           TN C6 L 8*/
   BTModu.stdCmd("TONE TE 400 V 64 TI 0 N C5 L 8 N R0 L 32 N E5 L 8 N R0 L 32 N G5 L 8 N R0 L 32 N B5 L 4 N R0 L 1 N C6 L 2 TN C6 L 8");
+  delay(5000);//try not to overload buffer, wait until done playing before playing next tone
+  BTModu.stdCmd("TONE TE 400 V 64 TI 0 N C6 L 8 N R0 L 32 N B5 L 8 N R0 L 32 N G5 L 8 N R0 L 32 N E5 L 4 N R0 L 1 N C5 L 2 TN C5 L 8");
 }
 
 void loop() {
@@ -58,31 +60,30 @@ void loop() {
 
   if (buttonResetState == LOW) {
     digitalWrite(resetLEDPin, LOW);//turn LED OFF
-    
     BTModu.reset();//send command to reset
     BTModu.stdCmd("TONE TE 400 V 64 TI 0 N C5 L 8 N R0 L 32 N E5 L 8 N R0 L 32 N G5 L 8 N R0 L 32 N B5 L 4 N R0 L 1 N C6 L 2 TN C6 L 8");
     Serial.println("Reset BC127");
-    
+
     delay(500);//short delay to see LED turn off when button pressed
     digitalWrite(resetLEDPin, HIGH);//turn LED ON
   }
 
   //Advertising/Discover Mode
   //if button is pressed, switch to advertising/discover mode
-  else if(buttonDiscoverState == LOW) {
+  else if (buttonDiscoverState == LOW) {
     //check if in discover mode...
-    
+
     digitalWrite(DiscoverLEDPin, HIGH);//turn LED ON
-    
     BTModu.stdCmd("DISCOVERABLE ON");// //use discover command to turn ON
+    BTModu.stdCmd("TONE TE 400 V 64 TI 0 N C6 L 8 N R0 L 32 N B5 L 8 N R0 L 32 N G5 L 8 N R0 L 32 N E5 L 4 N R0 L 1 N C5 L 2 TN C5 L 8");
     //this will disconnect any that is currently paired
     Serial.println("Make BC127 Discoverable");
     //Note: If discoverable OFF (blue LED1 is blinking), you are not able to pair/connect
     //but you can still connect if you have previously paired
     //you might not see it when scanning
-    
+
     delay(500);//short delay to see LED turn off when button pressed
     digitalWrite(DiscoverLEDPin, LOW);//turn LED OFF
   }
 
-}
+}c
