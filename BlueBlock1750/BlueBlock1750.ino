@@ -35,7 +35,7 @@ void setup() {
   digitalWrite(DiscoverLEDPin, LOW);//turn LED OFF since BC127 is in AUTOCONNECT MODE
 
 
-  //Volume default will be 11 (i.e. A2DP=11)
+  //Bluetooth volume default will be 11 (i.e. A2DP=11)
   //Example Tone to connect using Tone pg 26
   /*TONE TE 400 V 64 TI 0 N C5 L 8
                           N R0 L 32
@@ -86,4 +86,4 @@ void loop() {
     digitalWrite(DiscoverLEDPin, LOW);//turn LED OFF
   }
 
-}c
+}
