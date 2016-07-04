@@ -37,14 +37,14 @@ void setup() {
 
   /*Bluetooth volume default will be 11 (i.e. A2DP=11)
   so turn volume up to max on startup*/
+  BTModu.stdCmd("VOLUME UP"); //turn volume up
+  delay(300);//add delay so BC127 take commands
   BTModu.stdCmd("VOLUME UP");
-  delay(100);
+  delay(300);
   BTModu.stdCmd("VOLUME UP");
-  delay(100);
+  delay(300);
   BTModu.stdCmd("VOLUME UP");
-  delay(100);
-  BTModu.stdCmd("VOLUME UP");
-  delay(100);
+  delay(300);
   
   //Example Tone to connect using Tone pg 26
   /*TONE TE 400 V 64 TI 0 N C5 L 8
