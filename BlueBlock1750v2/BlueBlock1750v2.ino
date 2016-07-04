@@ -30,6 +30,7 @@ boolean prev_buttonResetState = false;
 boolean current_buttonResetState = false;
 
 
+
 const int buttonDiscoverPin = 3; //discover button
 const int DiscoverLEDPin = 9; //blue LED
 int buttonDiscoverState = HIGH; //set Discover button HIGH, so not pressing.
@@ -147,17 +148,3 @@ void loop() {
  write
  reset
  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
