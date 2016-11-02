@@ -1,4 +1,4 @@
-/* BlueBlock1750v3.ino
+/* BlueBlock1750v4.ino
  by: Ho Yun "Bobby" Chan @ SparkFun Electronics
  August 18th, 2016
 
