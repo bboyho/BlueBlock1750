@@ -1,7 +1,7 @@
 /* BlueBlock1750v3.ino
  by: Ho Yun "Bobby" Chan @ SparkFun Electronics
  November 1st, 2016
-
+ 
  Code to connect/disconnect a source device to the
  BC127 audio bluetooth (sink) @ Block1750.
  
@@ -59,7 +59,7 @@ void setup() {
   pinMode(DiscoverLEDPin, OUTPUT);//big dome pushbutton LED
   digitalWrite(DiscoverLEDPin, LOW);//turn LED OFF since BC127 is in AUTOCONNECT MODE
 
-//restore configuration for BlueBlock1750 in case VREGEN pressed...
+  //restore configuration for BlueBlock1750 in case VREGEN pressed...
   /*1.) Name is BlueBlock1750:
    set name=BlueBlock1750
    2.) Bluetooth is set to sink:
@@ -71,7 +71,7 @@ void setup() {
    */
   BTModu.stdCmd("restore");
   delay(300);
-  BTModu.stdCmd("set name=DeltaChiBluetooth");//name
+  BTModu.stdCmd("set name=BlueBlock1750");//name
   delay(300);
   BTModu.stdCmd("set classic_role=0");//set to sink
   delay(300);
@@ -81,7 +81,7 @@ void setup() {
   delay(300);
   BTModu.stdCmd("write");
   delay(300);
-  BTModu.stdCmd("reset");
+  BTModu.reset();//send command to reset
   delay(1000);
 
   /*Bluetooth volume default will be 11 (i.e. A2DP=11)
@@ -123,7 +123,29 @@ void loop() {
 
     if(prev_buttonResetState != current_buttonResetState){
       digitalWrite(resetLEDPin, LOW);//turn LED OFF
+      BTModu.stdCmd("restore");
+      delay(300);
+      BTModu.stdCmd("set name=BlueBlock1750");//name
+      delay(300);
+      BTModu.stdCmd("set classic_role=0");//set to sink
+      delay(300);
+      BTModu.stdCmd("set autoconn=1"); //set autoconn
+      delay(300);
+      BTModu.stdCmd("set enable_hfp=off");//turn off hfp
+      delay(300);
+      BTModu.stdCmd("write");
+      delay(300);
       BTModu.reset();//send command to reset
+      delay(1000);
+
+      BTModu.stdCmd("VOLUME UP");//turn volume up
+      delay(300);//add delay so BC127 take commands
+      BTModu.stdCmd("VOLUME UP");
+      delay(300);
+      BTModu.stdCmd("VOLUME UP");
+      delay(300);
+      BTModu.stdCmd("VOLUME UP");
+      delay(300);
       BTModu.stdCmd("TONE TE 400 V 64 TI 0 N C5 L 8 N R0 L 32 N E5 L 8 N R0 L 32 N G5 L 8 N R0 L 32 N B5 L 4 N R0 L 1 N C6 L 2 TN C6 L 8");
       Serial.println("Reset BC127");
     }
@@ -181,6 +203,8 @@ void loop() {
  write
  reset
  */
+
+
 
 
 
