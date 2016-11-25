@@ -1,6 +1,6 @@
 /* BlueBlock1750v3.ino
  by: Ho Yun "Bobby" Chan @ SparkFun Electronics
- November 1st, 2016
+ November 24th, 2016
  
  Code to connect/disconnect a source device to the
  BC127 audio bluetooth (sink) @ Block1750.
@@ -69,20 +69,8 @@ void setup() {
    4.) HFP is turned off:
    set enable_hfp=off
    */
-  BTModu.stdCmd("restore");
-  delay(300);
-  BTModu.stdCmd("set name=BlueBlock1750");//name
-  delay(300);
-  BTModu.stdCmd("set classic_role=0");//set to sink
-  delay(300);
-  BTModu.stdCmd("set autoconn=1"); //set autoconn
-  delay(300);
-  BTModu.stdCmd("set enable_hfp=off");//turn off hfp
-  delay(300);
-  BTModu.stdCmd("write");
-  delay(300);
-  BTModu.reset();//send command to reset
-  delay(1000);
+
+  bluetoothReset();
 
   /*Bluetooth volume default will be 11 (i.e. A2DP=11)
    so turn volume up to max on startup*/
@@ -123,20 +111,8 @@ void loop() {
 
     if(prev_buttonResetState != current_buttonResetState){
       digitalWrite(resetLEDPin, LOW);//turn LED OFF
-      BTModu.stdCmd("restore");
-      delay(300);
-      BTModu.stdCmd("set name=BlueBlock1750");//name
-      delay(300);
-      BTModu.stdCmd("set classic_role=0");//set to sink
-      delay(300);
-      BTModu.stdCmd("set autoconn=1"); //set autoconn
-      delay(300);
-      BTModu.stdCmd("set enable_hfp=off");//turn off hfp
-      delay(300);
-      BTModu.stdCmd("write");
-      delay(300);
-      BTModu.reset();//send command to reset
-      delay(1000);
+
+      bluetoothReset();
 
       BTModu.stdCmd("VOLUME UP");//turn volume up
       delay(300);//add delay so BC127 take commands
@@ -204,7 +180,20 @@ void loop() {
  reset
  */
 
+void bluetoothReset(){
 
-
-
-
+  //BTModu.stdCmd("restore");
+  //delay(300);
+  //BTModu.stdCmd("set name=BlueBlock1750");//name
+  //delay(300);
+  BTModu.stdCmd("set classic_role=0");//set to sink
+  delay(300);
+  BTModu.stdCmd("set autoconn=1"); //set autoconn
+  delay(300);
+  BTModu.stdCmd("set enable_hfp=off");//turn off hfp
+  delay(300);
+  BTModu.stdCmd("write");
+  delay(300);
+  BTModu.reset();//send command to reset
+  delay(1000);
+}
