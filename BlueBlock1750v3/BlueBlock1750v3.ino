@@ -10,7 +10,7 @@
  Bluetooth is set to sink:
  set classic_role=0
  The autoconnect is turned off:
- set autoconn=1
+ set autoconn=0
  HFP is turned off:
  set enable_hfp=off
  
@@ -58,17 +58,6 @@ void setup() {
   pinMode(buttonDiscoverPin, INPUT_PULLUP);//use internal pullup resistor w/ discover button
   pinMode(DiscoverLEDPin, OUTPUT);//big dome pushbutton LED
   digitalWrite(DiscoverLEDPin, LOW);//turn LED OFF since BC127 is in AUTOCONNECT MODE
-
-  //restore configuration for BlueBlock1750 in case VREGEN pressed...
-  /*1.) Name is BlueBlock1750:
-   set name=BlueBlock1750
-   2.) Bluetooth is set to sink:
-   set classic_role=0
-   3.) The autoconnect is turned off:
-   set autoconn=1
-   4.) HFP is turned off:
-   set enable_hfp=off
-   */
 
   bluetoothReset();
 
@@ -182,13 +171,24 @@ void loop() {
 
 void bluetoothReset(){
 
+  /*restore configuration for BlueBlock1750 in case VREGEN pressed...
+  //1.) Name is BlueBlock1750:
+  // set name=BlueBlock1750
+   2.) Bluetooth is set to sink:
+   set classic_role=0
+   3.) The autoconnect is turned off:
+   set autoconn=0
+   4.) HFP is turned off:
+   set enable_hfp=off
+   */
+
   //BTModu.stdCmd("restore");
   //delay(300);
   //BTModu.stdCmd("set name=BlueBlock1750");//name
   //delay(300);
   BTModu.stdCmd("set classic_role=0");//set to sink
   delay(300);
-  BTModu.stdCmd("set autoconn=1"); //set autoconn
+  BTModu.stdCmd("set autoconn=0"); //disable autoconnect
   delay(300);
   BTModu.stdCmd("set enable_hfp=off");//turn off hfp
   delay(300);
