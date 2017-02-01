@@ -1,7 +1,7 @@
 /* BlueBlock1750v3.ino
  by: Ho Yun "Bobby" Chan @ SparkFun Electronics
- November 24th, 2016
- 
+February 1st, 2017
+
  Code to connect/disconnect a source device to the
  BC127 audio bluetooth (sink) @ Block1750.
  
@@ -30,14 +30,14 @@ SoftwareSerial swPort(10, 11); // RX, TX
 BC127 BTModu(&swPort);
 
 //buttons
+const int powerLEDpin = 7; //LED indicator for latching power button
+
 const int buttonResetPin = 2; //reset button
 const int resetLEDPin = 8;    //red LED
 int buttonResetState = HIGH; //set reset button HIGH, so not pressing
 //keep track if reset button press when held down
 boolean prev_buttonResetState = false;
 boolean current_buttonResetState = false;
-
-
 
 const int buttonDiscoverPin = 3; //discover button
 const int DiscoverLEDPin = 9; //blue LED
@@ -51,6 +51,9 @@ void setup() {
   Serial.println("Start BlueBlock1750");
   swPort.begin(9600); //init software serial port with BC127
 
+  pinMode(powerLEDpin, OUTPUT);//set pin for latching button's LED
+  digitalWrite(powerLEDpin,HIGH);//turn LED ON
+  
   pinMode(buttonResetPin, INPUT_PULLUP); //use internal pullup resistor w/ reset button
   pinMode(resetLEDPin, OUTPUT);//big dome pushbutton LED
   digitalWrite(resetLEDPin, HIGH);//turn LED ON
