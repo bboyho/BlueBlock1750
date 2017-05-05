@@ -8,7 +8,7 @@ BC127 Library => https://github.com/sparkfun/SparkFun_BC127_Bluetooth_Module_Ard
 License Information
 -------------------
 
-This product is _**open source**_! 
+This project is _**open source**_! 
 
 Please review the [LICENSE.md](https://github.com/bboyho/BlueBlock1750/blob/master/LICENSE.md) file for license information. 
 
