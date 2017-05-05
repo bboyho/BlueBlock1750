@@ -1,7 +1,7 @@
 BlueBlock1750
 -------------------
 
-Code to control [BC127 Audio Bluetooth Development Board](https://www.sparkfun.com/products/11924) at Block1750.
+Arduino code to control [BC127 Audio Bluetooth Development Board](https://www.sparkfun.com/products/11924) at Block1750. This code is also used in my car and as portable audio bluetooth device when teaching at different studios.
 
 BC127 Library => https://github.com/sparkfun/SparkFun_BC127_Bluetooth_Module_Arduino_Library
 
