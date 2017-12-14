@@ -30,10 +30,10 @@ SoftwareSerial swPort(10, 11); // RX, TX
 BC127 BTModu(&swPort);
 
 //buttons
-const int powerLEDpin = 7; //LED indicator for latching power button
+const int powerLEDpin = 7; //red LED indicator for latching power button
 
 const int buttonResetPin = 2; //reset button
-const int resetLEDPin = 8;    //red LED
+const int resetLEDPin = 8;    //green LED
 int buttonResetState = HIGH; //set reset button HIGH, so not pressing
 //keep track if reset button press when held down
 boolean prev_buttonResetState = false;
@@ -60,7 +60,7 @@ void setup() {
 
   pinMode(buttonDiscoverPin, INPUT_PULLUP);//use internal pullup resistor w/ discover button
   pinMode(DiscoverLEDPin, OUTPUT);//big dome pushbutton LED
-  digitalWrite(DiscoverLEDPin, LOW);//turn LED OFF since BC127 is in AUTOCONNECT MODE
+  digitalWrite(DiscoverLEDPin, HIGH);//turn LED ON
 
   bluetoothReset();
 
@@ -136,7 +136,7 @@ void loop() {
     current_buttonDiscoverState = true; //button has been pressed
 
     if(prev_buttonDiscoverState != current_buttonDiscoverState){
-      digitalWrite(DiscoverLEDPin, HIGH);//turn LED ON
+      digitalWrite(DiscoverLEDPin, LOW);//turn LED OFF
       BTModu.stdCmd("DISCOVERABLE ON");// //use discover command to turn ON
       //this will disconnect any that is currently paired
       BTModu.stdCmd("TONE TE 400 V 64 TI 0 N C6 L 8 N R0 L 32 N B5 L 8 N R0 L 32 N G5 L 8 N R0 L 32 N E5 L 4 N R0 L 1 N C5 L 2 TN C5 L 8");
@@ -150,7 +150,7 @@ void loop() {
   else if(buttonDiscoverState == HIGH){
     current_buttonDiscoverState = false;// button has not been pressed
     if(prev_buttonDiscoverState != current_buttonDiscoverState){
-      digitalWrite(DiscoverLEDPin, LOW);//turn LED OFF
+      digitalWrite(DiscoverLEDPin, HIGH);//turn LED ON
     }
     prev_buttonDiscoverState = current_buttonDiscoverState;//update Discover button's state
   }
@@ -187,8 +187,8 @@ void bluetoothReset(){
 
   //BTModu.stdCmd("restore");
   //delay(300);
-  //BTModu.stdCmd("set name=BlueBlock1750");//name
-  //delay(300);
+  BTModu.stdCmd("set name=BlueBlock1750");//name
+  delay(300);
   BTModu.stdCmd("set classic_role=0");//set to sink
   delay(300);
   BTModu.stdCmd("set autoconn=0"); //disable autoconnect
