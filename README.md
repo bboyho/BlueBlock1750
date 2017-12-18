@@ -11,11 +11,12 @@ Arduino code to control the [SparkFun Purpletooth Jamboree - BC127 Audio Bluetoo
 
 Repository Contents
 -------------------
-_* /BlueBlock1750v1 - Initial code to control BC127 by resetting and making the Bluetooth discoverable._
-_* /BlueBlock1750v2 - Same code as v1 but includes button states to check when a button has been pressed. The button states help by sending the commands once per button press._
-* /BlueBlock1750v3 - Stable code used for the Bluetooth audio adapters. Includes an additional modular function to automate the default configuration and resetting the Bluetooth.
-_* /BlueBlock1750v4 - Beta testing code to check the state of the Bluetooth (connected or not) and control the blue "Discoverable" status LED.
-_* /array test - Beta testing arrays for BlueBlock1750v4._
+
+* _/BlueBlock1750v1 - Initial code to control BC127 by resetting and making the Bluetooth discoverable._
+* _/BlueBlock1750v2 - Same code as v1 but includes button states to check when a button has been pressed. The button states help by sending the commands once per button press._
+* **/BlueBlock1750v3 - Stable code used for the Bluetooth audio adapters. Includes an additional modular function to automate the default configuration and resetting the Bluetooth.**
+* _/BlueBlock1750v4 - Beta testing code to check the state of the Bluetooth (connected or not) and control the blue "Discoverable" status LED._
+* _/array test - Beta testing arrays for BlueBlock1750v4._
 
 Documentation
 -------------------
