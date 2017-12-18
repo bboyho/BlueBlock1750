@@ -7,7 +7,7 @@ Arduino code to control the [SparkFun Purpletooth Jamboree - BC127 Audio Bluetoo
  * with a mixer and studio monitor's
  * portable audio bluetooth device when teaching at different studios
  
--> [![All three wireless audio bluetooth adapters](https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/1/Wireless_Bluetooth_Speaker_Project-15.jpg)](https://cdn.sparkfun.com/assets/learn_tutorials/4/6/1/Wireless_Bluetooth_Speaker_Project-15.jpg) <-
+[![All three wireless audio bluetooth adapters](https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/1/Wireless_Bluetooth_Speaker_Project-15.jpg)](https://cdn.sparkfun.com/assets/learn_tutorials/4/6/1/Wireless_Bluetooth_Speaker_Project-15.jpg)
 
 Repository Contents
 -------------------
