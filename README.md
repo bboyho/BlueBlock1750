@@ -1,10 +1,10 @@
 BlueBlock1750
 -------------------
 
-Arduino code to control the [SparkFun Purpletooth Jamboree - BC127 Audio Bluetooth Development Board](https://www.sparkfun.com/products/11924) at Block1750. This code is also used for a custom wireless audio Bluetooth adapter in older speaker systems. It has been tested:
+Arduino code to control the [SparkFun Purpletooth Jamboree - BC127 Audio Bluetooth Development Board](https://www.sparkfun.com/products/11924). This code is also used for a custom wireless audio Bluetooth adapter in older speaker systems. It has been tested since 2016:
 
  * in my car
- * with a mixer and studio monitor's
+ * with a mixer and studio monitor's at Block1750
  * portable audio bluetooth device when teaching at different studios
  
 [![All three wireless audio bluetooth adapters](https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/4/6/1/Wireless_Bluetooth_Speaker_Project-15.jpg)](https://cdn.sparkfun.com/assets/learn_tutorials/4/6/1/Wireless_Bluetooth_Speaker_Project-15.jpg)
